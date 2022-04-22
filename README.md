@@ -30,3 +30,6 @@ WorldSpace Shader
 ![image](https://user-images.githubusercontent.com/16842052/164685535-ed798151-3019-4d29-9e7d-1e6a256ced54.png)
 
 slides: https://docs.google.com/presentation/d/14GCjvJKgu0l17hk393JhS1E-2viwngnlTdP4Igtc7SE/edit?usp=sharing
+
+noise texture: https://kronbits.itch.io/hd-textures-vol1/devlog/24753/update-2-20-mf-noise-t
+grass texture: https://www.deviantart.com/hggraphicdesigns/art/Seamless-Tiling-Grass-187285446?q=gallery%3Acesstrelle%2F27181912&qo=21

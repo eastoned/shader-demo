@@ -28,3 +28,5 @@ Vertex Animation Shaders
 WorldSpace Shader
 
 ![image](https://user-images.githubusercontent.com/16842052/164685535-ed798151-3019-4d29-9e7d-1e6a256ced54.png)
+
+slides: https://docs.google.com/presentation/d/14GCjvJKgu0l17hk393JhS1E-2viwngnlTdP4Igtc7SE/edit?usp=sharing

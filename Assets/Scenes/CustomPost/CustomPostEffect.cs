@@ -8,8 +8,8 @@ using UnityEngine.Rendering.PostProcessing;
 [PostProcess(typeof(CustomPostEffectRenderer), PostProcessEvent.AfterStack, "ShaderDemo/PostEffect")]
 public sealed class CustomPostEffect : PostProcessEffectSettings
 {
-    [Range(0f, 1f), Tooltip("Post effect intensity")]
-    public FloatParameter blend = new FloatParameter { value = 0.5f };
+    [Range(16f, 512f), Tooltip("Post effect intensity")]
+    public FloatParameter blend = new FloatParameter { value = 16f };
 }
 public sealed class CustomPostEffectRenderer: PostProcessEffectRenderer<CustomPostEffect>
 {

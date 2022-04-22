@@ -52,7 +52,7 @@ Shader "ShaderDemo/InteractivityShader"
             float dis = 1 - saturate((distance(worldPos, _PlayerPos) - .2) / (1 - 0));
 
             float noise = tex2Dlod(_NoiseTex, float4(v.texcoord.xy + _Time.x/30, 0, 0)).r;
-            v.vertex.xyz += v.normal * dis * _Strength * noise;
+            v.vertex.xyz += v.normal * dis * _Strength;// *noise;
         }
 
         void surf (Input IN, inout SurfaceOutputStandard o)

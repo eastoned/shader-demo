@@ -27,9 +27,9 @@ public class SendMousePositionToShader : MonoBehaviour
 
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out _hit, 100f))
             {
-               // Debug.Log(_hit.collider);
+                Debug.Log(_hit.collider);
                 _playerPos = _hit.point;
-                Debug.Log(_playerPos);
+                //Debug.Log(_playerPos);
             }
         }
 

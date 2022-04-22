@@ -3,8 +3,10 @@ Shader "ShaderDemo/Unlit/SimpleUnlitShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Color", Color) = (.5,.5,.5,1)
+        [HDR]_Color ("Color", Color) = (.5,.5,.5,1)
+        //_Brightness ("Brightness", Range(1,3)) = 1.0
     }
+
     SubShader
     {
         Tags { "RenderType"="Opaque" }
@@ -36,6 +38,7 @@ Shader "ShaderDemo/Unlit/SimpleUnlitShader"
             sampler2D _MainTex;
             float4 _MainTex_ST;
             float4 _Color;
+            float _Brightness;
 
             v2f vert (appdata v)
             {

@@ -6,6 +6,7 @@ Shader "ShaderDemo/VertexOscillation"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+            _Freq("Frequency", Range(0, 50)) = 1.0
     }
     SubShader
     {
@@ -29,6 +30,7 @@ Shader "ShaderDemo/VertexOscillation"
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
+        float _Freq;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -39,7 +41,7 @@ Shader "ShaderDemo/VertexOscillation"
 
         void vert(inout appdata_full v) {
            
-            v.vertex.xz += v.vertex.xz * (sin(v.vertex.y*10 + _Time.w) + 1)* .1;
+            v.vertex.xz += v.vertex.xz * (sin(v.vertex.y*_Freq + _Time.w) + 1)* .1;
             float3 worldPos = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1)).xyz;
             //worldPos *= 32;
             //worldPos = round(worldPos);

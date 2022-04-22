@@ -2,7 +2,7 @@
 shader demo scenes
 includes:
 
-Custom Post Processing
+Custom Post Processing\n
 ![pixels](https://user-images.githubusercontent.com/16842052/164685605-4d47abf4-87b1-42ee-9c7c-7199d15dcb9f.gif)
 
 Scrolling UVs

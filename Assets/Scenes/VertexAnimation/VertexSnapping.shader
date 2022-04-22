@@ -1,4 +1,4 @@
-Shader "ShaderDemo/VertexOscillation"
+Shader "ShaderDemo/VertexSnapping"
 {
     Properties
     {
@@ -6,6 +6,7 @@ Shader "ShaderDemo/VertexOscillation"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+        _GridSize ("World Grid Size", float) = 100
     }
     SubShader
     {
@@ -14,7 +15,7 @@ Shader "ShaderDemo/VertexOscillation"
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows vertex:vert addshadow
+        #pragma surface surf Standard fullforwardshadows vertex:vert addshadows
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -29,6 +30,7 @@ Shader "ShaderDemo/VertexOscillation"
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
+        float _GridSize;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -36,17 +38,14 @@ Shader "ShaderDemo/VertexOscillation"
         UNITY_INSTANCING_BUFFER_START(Props)
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
-
-        void vert(inout appdata_full v) {
-           
-            v.vertex.xz += v.vertex.xz * (sin(v.vertex.y*10 + _Time.w) + 1)* .1;
+         void vert(inout appdata_full v) {
             float3 worldPos = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1)).xyz;
-            //worldPos *= 32;
-            //worldPos = round(worldPos);
-            //worldPos /= 32;
-            //v.vertex.xyz = mul(unity_WorldToObject, float4(worldPos, 1)).xyz;
-
+            worldPos *= _GridSize;
+            worldPos = round(worldPos);
+            worldPos /= _GridSize;
+            v.vertex.xyz = mul(unity_WorldToObject, float4(worldPos, 1)).xyz;
         }
+
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {

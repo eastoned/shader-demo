@@ -40,9 +40,15 @@ Shader "ShaderDemo/Unlit/SimpleUnlitShader"
             float4 _Color;
             float _Brightness;
 
+            float random (float2 uv)
+            {
+                return frac(sin(dot(uv,float2(12.9898,78.233)))*43758.5453123);
+            }
+
             v2f vert (appdata v)
             {
                 v2f o;
+                ///float randomValue = random(float2(v.vertex.x + _Time.x, v.vertex.z));
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
@@ -53,6 +59,7 @@ Shader "ShaderDemo/Unlit/SimpleUnlitShader"
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+                col.rgb = (i.uv.y < _SinTime ? 0:1).xxx;
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
